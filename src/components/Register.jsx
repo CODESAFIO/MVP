@@ -55,8 +55,8 @@ function Register() {
           <label htmlFor="universidad" className="block text-gray-600 text-sm font-semibold mb-2">Universidad</label>
           <select id="universidad" className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
             <option value="">Seleccione su universidad</option>
-            <option value="universidad1">Universidad 1</option>
-            <option value="universidad2">Universidad 2</option>
+            <option value="Univerisdad Catolica Andres Bello - Caracas">Univerisdad Catolica Andres Bello - Caracas</option>
+            <option value="Univerisdad Catolica Andres Bello - Guayana">Univerisdad Catolica Andres Bello - Guayana</option>
             <option value="universidad3">Universidad 3</option>
           </select>
         </div>
@@ -66,9 +66,9 @@ function Register() {
           <label htmlFor="facultad" className="block text-gray-600 text-sm font-semibold mb-2">Facultad</label>
           <select id="facultad" className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
             <option value="">Seleccione su facultad</option>
-            <option value="facultad1">Facultad 1</option>
-            <option value="facultad2">Facultad 2</option>
-            <option value="facultad3">Facultad 3</option>
+            <option value="Ingeniera">Ingeniera</option>
+            <option value="Comun. Social">Comun. Social</option>
+            <option value="Economia">Economia</option>
           </select>
         </div>
 
@@ -77,9 +77,9 @@ function Register() {
           <label htmlFor="carrera" className="block text-gray-600 text-sm font-semibold mb-2">Carrera</label>
           <select id="carrera" className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
             <option value="">Seleccione su carrera</option>
-            <option value="carrera1">Carrera 1</option>
-            <option value="carrera2">Carrera 2</option>
-            <option value="carrera3">Carrera 3</option>
+            <option value="Ingenieria Informatica">Ingenieria Informatica</option>
+            <option value="Ingenieria Telecom">Ingenieria Telecom</option>
+            <option value="Ingenieria Civil">Ingenieria Civil</option>
           </select>
         </div>
         
