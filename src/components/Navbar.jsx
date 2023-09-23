@@ -1,6 +1,6 @@
 function Navbar() {
   return (
-      <div class="text-amber-300">
+      <div class="text-blue-300">
         navbar
       </div>
 
