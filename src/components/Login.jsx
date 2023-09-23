@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function Login() {
-  const [userType, setUserType] = useState('estudiante'); // Por defecto, se establece como "estudiante"
+function Sesion() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para rastrear si el usuario ha iniciado sesión
-
-  const handleUserTypeChange = (type) => {
-    setUserType(type);
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isInvalidPassword, setIsInvalidPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = () => {
-    // Aquí puedes agregar la lógica de inicio de sesión, por ejemplo, verificar credenciales.
-    // Simularemos un inicio de sesión exitoso después de 2 segundos para fines de demostración.
+    setIsLoading(true);
+
+    // Simulación de inicio de sesión
     setTimeout(() => {
-      setIsLoggedIn(true);
+      if (email === 'ejic2003@gmail.com' && password === '123456') {
+        setIsLoggedIn(true);
+        setIsLoading(false);
+      } else {
+        setIsInvalidPassword(true);
+        setIsLoading(false);
+      }
     }, 2000);
   };
+
+  useEffect(() => {
+    setIsInvalidPassword(false);
+  }, [email, password]);
 
   if (isLoggedIn) {
     return (
@@ -33,23 +41,6 @@ function Login() {
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96 xl:w-2/4 text-center">
         <h1 className="text-gray-800 text-3xl mb-4">Inicio de Sesión</h1>
-
-        {/* Tipo de Usuario */}
-        <div className="mb-4">
-          <div>
-            <label className="block text-left text-gray-600">Tipo de Usuario:</label>
-            <div>
-              <select
-                className="border p-2 rounded w-full"
-                value={userType}
-                onChange={(e) => handleUserTypeChange(e.target.value)}
-              >
-                <option value="estudiante">Estudiante</option>
-                <option value="tutor">Tutor</option>
-              </select>
-            </div>
-          </div>
-        </div>
 
         {/* Email */}
         <div className="mb-4">
@@ -75,21 +66,36 @@ function Login() {
           />
         </div>
 
+        {/* Mensaje de contraseña incorrecta */}
+        {isInvalidPassword && (
+          <p className="text-red-500 text-sm mb-2">Contraseña incorrecta. Por favor, intenta de nuevo.</p>
+        )}
+
+        {/* Barra de carga */}
+        {isLoading && (
+          <div className="w-24 mx-auto mt-4">
+            <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-blue-500"></div>
+          </div>
+        )}
+
         {/* Botón de Inicio de Sesión */}
         <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 mt-4"
+          className={`bg-blue-500 text-white py-2 px-4 rounded-full hover:bg-blue-600 mt-4 ${
+            isLoading ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
           onClick={handleLogin}
+          disabled={isLoading}
         >
-          Iniciar Sesión
+          {isLoading ? 'Iniciando Sesión...' : 'Iniciar Sesión'}
         </button>
 
-        {/* Enlace a la página de registro */}
+        {/* Enlace para registrarse */}
         <p className="mt-4">
-          ¿No tienes una cuenta? <a href="Register.jsx">Regístrate</a>
+          ¿No tienes una cuenta? <a href="/registro">Regístrate aquí</a>.
         </p>
       </div>
     </div>
   );
 }
 
-export default Login;
+export default Sesion;
