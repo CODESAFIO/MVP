@@ -2,45 +2,35 @@ import React, { useState } from 'react';
 
 function Tutorship() {
   const [formData, setFormData] = useState({
-    universidad: '',
-    facultad: '',
-    carrera: '',
-    materia: '',
-    tipo: '',
-    modalidad: '',
-    descripcion: '', // Nuevo campo de descripción
-    diasSemana: [],
-    horarios: {},
+    paisProductor: '',
+    regionVinicola: '',
+    descripcionBodega: '', // Nuevo campo de descripción
+    nombre: '',
+    fundacionFecha: '', 
+    direccion: '',
+    telefono: '',
+    pagina: '',
+    descripcionVinos: '',  
   });
 
-  const [showPassword, setShowPassword] = useState(false);
-
-  const diasSemanaData = [
-    { id: 'lunes', label: 'Lunes' },
-    { id: 'martes', label: 'Martes' },
-    { id: 'miercoles', label: 'Miércoles' },
-    { id: 'jueves', label: 'Jueves' },
-    { id: 'viernes', label: 'Viernes' },
-    { id: 'sabado', label: 'Sábado' },
-    { id: 'domingo', label: 'Domingo' },
-  ];
+ 
 
   const materiasData = [
-    'Materia 1',
-    'Materia 2',
-    'Materia 3',
+    'Francia',
+    'Uruguay',
+    'Austria',
+    'Geoorgia',
     // Agrega aquí más opciones de materias
   ];
 
   const tiposData = [
-    'Particular',
-    'Grupal',
+    'Maldonado',
+    'Wachau',
+    'Châteauneuf-du-Pape',
+    'Mukhrani',
   ];
 
-  const modalidadesData = [
-    'Online',
-    'Presencial',
-  ];
+ 
 
   const handleChange = (e) => {
     const { id, value, name, checked } = e.target;
@@ -85,56 +75,23 @@ function Tutorship() {
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96 xl:w-2/4">
-        <h1 className="text-gray-800 text-3xl mb-4 text-center">Agregar Tutoria</h1>
+        <h1 className="text-gray-800 text-3xl mb-4 text-center">Agregar Empresa</h1>
 
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-600 text-sm font-semibold mb-2">Días de la Semana</label>
-            <div className="flex gap-4">
-              {diasSemanaData.map((dia) => (
-                <label key={dia.id}>
-                  <input
-                    type="checkbox"
-                    id={dia.id}
-                    name="diasSemana"
-                    value={dia.id}
-                    onChange={handleChange}
-                    checked={formData.diasSemana.includes(dia.id)}
-                  />
-                  {dia.label}
-                </label>
-              ))}
-            </div>
-          </div>
-
-          {formData.diasSemana.map((dia) => (
-            <div className="mb-4" key={dia}>
-              <label htmlFor={dia} className="block text-gray-600 text-sm font-semibold mb-2">{dia}</label>
-              <input
-                type="text"
-                id={dia}
-                name={dia}
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-                placeholder={`Ingrese el horario para ${dia}`}
-                onChange={(e) => handleHorarioChange(e, dia)}
-                value={formData.horarios[dia] || ''}
-              />
-            </div>
-          ))}
 
           {/* Combobox de Materia */}
           <div className="mb-4">
-            <label htmlFor="materia" className="block text-gray-600 text-sm font-semibold mb-2">Materia</label>
+            <label htmlFor="paisProductor" className="block text-gray-600 text-sm font-semibold mb-2">Pais Productor</label>
             <select
-              id="materia"
+              id="paisProductor"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
               onChange={handleChange}
-              value={formData.materia}
+              value={formData.paisProductor}
             >
-              <option value="">Seleccione una materia</option>
-              {materiasData.map((materia) => (
-                <option key={materia} value={materia}>
-                  {materia}
+              <option value="">Seleccione un país</option>
+              {materiasData.map((paisProductor) => (
+                <option key={paisProductor} value={paisProductor}>
+                  {paisProductor}
                 </option>
               ))}
             </select>
@@ -142,49 +99,105 @@ function Tutorship() {
 
           {/* Combobox de Tipo */}
           <div className="mb-4">
-            <label htmlFor="tipo" className="block text-gray-600 text-sm font-semibold mb-2">Tipo</label>
+            <label htmlFor="regionVinicola" className="block text-gray-600 text-sm font-semibold mb-2">Region Vinicola D.O</label>
             <select
-              id="tipo"
+              id="regionVinicola"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
               onChange={handleChange}
-              value={formData.tipo}
+              value={formData.regionVinicola}
             >
-              <option value="">Seleccione un tipo</option>
-              {tiposData.map((tipo) => (
-                <option key={tipo} value={tipo}>
-                  {tipo}
+              <option value="">Seleccione una Region</option>
+              {tiposData.map((regionVinicola) => (
+                <option key={regionVinicola} value={regionVinicola}>
+                  {regionVinicola}
                 </option>
               ))}
             </select>
           </div>
 
-          {/* Combobox de Modalidad */}
-          <div className="mb-4">
-            <label htmlFor="modalidad" className="block text-gray-600 text-sm font-semibold mb-2">Modalidad</label>
-            <select
-              id="modalidad"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-              onChange={handleChange}
-              value={formData.modalidad}
-            >
-              <option value="">Seleccione una modalidad</option>
-              {modalidadesData.map((modalidad) => (
-                <option key={modalidad} value={modalidad}>
-                  {modalidad}
-                </option>
-              ))}
-            </select>
+           {/* Email */}
+        <div className="mb-4">
+          <label htmlFor="nombre" className="block text-gray-600 text-sm font-semibold mb-2">Nombre</label>
+          <input
+            id="nombre"
+            className="border p-2 rounded w-full"
+            placeholder="Ingresa el nombre de la bodega"
+            onChange={handleChange}
+            value={formData.nombre}
+          />
+          </div>
+
+           {/* Email */}
+        <div className="mb-4">
+          <label htmlFor="fundacionFecha" className="block text-gray-600 text-sm font-semibold mb-2">Fecha De fundación</label>
+          <input
+            id="fundacionFecha"
+            className="border p-2 rounded w-full"
+            placeholder="Ingresa la fecha de fundacion de la empresa"
+            onChange={handleChange}
+            value={formData.fundacionFecha}
+          />
+          </div>      
+          
+
+          {/* Email */}
+        <div className="mb-4">
+          <label htmlFor="direccion" className="block text-gray-600 text-sm font-semibold mb-2">direccion</label>
+          <input
+            id="direccion"
+            className="border p-2 rounded w-full"
+            placeholder="Ingresa la direccion de la empresa"
+            onChange={handleChange}
+            value={formData.direccion}
+          />
+          </div> 
+
+
+           {/* Email */}
+        <div className="mb-4">
+          <label htmlFor="telefono" className="block text-gray-600 text-sm font-semibold mb-2">Numero Telefonico</label>
+          <input
+            id="telefono"
+            className="border p-2 rounded w-full"
+            placeholder="Ingresa Un telefono de contacto"
+            onChange={handleChange}
+            value={formData.telefono}
+          />
+          </div> 
+
+            {/* Email */}
+        <div className="mb-4">
+          <label htmlFor="pagina" className="block text-gray-600 text-sm font-semibold mb-2">Pagina Web</label>
+          <input
+            id="pagina"
+            className="border p-2 rounded w-full"
+            placeholder="Ingresa la pagina de la empresa"
+            onChange={handleChange}
+            value={formData.pagina}
+          />
           </div>
 
           {/* Campo de Descripción */}
           <div className="mb-4">
-            <label htmlFor="descripcion" className="block text-gray-600 text-sm font-semibold mb-2">Descripción</label>
+            <label htmlFor="descripcionBodega" className="block text-gray-600 text-sm font-semibold mb-2">Descripción de Bodega</label>
             <textarea
-              id="descripcion"
+              id="descripcionBodega"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
               placeholder="Ingrese una descripción"
               onChange={handleChange}
-              value={formData.descripcion}
+              value={formData.descripcionBodega}
+            />
+          </div>
+
+          {/* Campo de Descripción */}
+          <div className="mb-4">
+            <label htmlFor="descripcionVinos" className="block text-gray-600 text-sm font-semibold mb-2">Descripción de Vino</label>
+            <textarea
+              id="descripcionVinos"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              placeholder="Ingrese una descripción"
+              onChange={handleChange}
+              value={formData.descripcionVinos}
             />
           </div>
 
