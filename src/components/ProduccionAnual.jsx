@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 
-function Tutorship() {
+function ProduccionAnual() {
   const [formData, setFormData] = useState({
     paisProductor: '',
     regionVinicola: '',
-    descripcionBodega: '', // Nuevo campo de descripción
+    bodega: '', // Nuevo campo de descripción
     nombre: '',
     fundacionFecha: '', 
     direccion: '',
     telefono: '',
     pagina: '',
-    descripcionVinos: '',  
+    Calificacion: '',  
   });
 
  
@@ -30,6 +30,28 @@ function Tutorship() {
     'Mukhrani',
   ];
 
+  const bodegaData = [
+    'Bodega Garzón',
+    'Domäne Wachau',
+    'Château de Beaucastel',
+    'Château Mukhrani',
+  ];
+
+
+  const vinoData = [
+    'Vino 1',
+    'Vino 2',
+    'Vino 3',
+    'Vino 4',
+  ];
+
+
+  const CalificacionData = [
+    'E',
+    'MB',
+    'M',
+    'R',
+  ];
  
 
   const handleChange = (e) => {
@@ -75,7 +97,7 @@ function Tutorship() {
   return (
     <div className="bg-gray-100 min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96 xl:w-2/4">
-        <h1 className="text-gray-800 text-3xl mb-4 text-center">Agregar Empresa</h1>
+        <h1 className="text-gray-800 text-3xl mb-4 text-center">Agregar Añada</h1>
 
         <form onSubmit={handleSubmit}>
 
@@ -115,90 +137,99 @@ function Tutorship() {
             </select>
           </div>
 
+
+                {/* Combobox de Tipo */}
+          <div className="mb-4">
+            <label htmlFor="empresa" className="block text-gray-600 text-sm font-semibold mb-2">Empresa</label>
+            <select
+              id="empresa"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              onChange={handleChange}
+              value={formData.empresa}
+            >
+              <option value="">Seleccione una Bodega</option>
+              {bodegaData.map((empresa) => (
+                <option key={empresa} value={empresa}>
+                  {empresa}
+                </option>
+              ))}
+            </select>
+          </div>
+
+
+                {/* Combobox de Tipo */}
+                <div className="mb-4">
+            <label htmlFor="vino" className="block text-gray-600 text-sm font-semibold mb-2">Vino</label>
+            <select
+              id="vino"
+              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+              onChange={handleChange}
+              value={formData.vino}
+            >
+              <option value="vino">Seleccione un Vino</option>
+              {vinoData.map((vino) => (
+                <option key={vino} value={vino}>
+                  {vino}
+                </option>
+              ))}
+            </select>
+          </div>
+
+
            {/* Email */}
         <div className="mb-4">
-          <label htmlFor="nombre" className="block text-gray-600 text-sm font-semibold mb-2">Nombre</label>
+          <label htmlFor="Año" className="block text-gray-600 text-sm font-semibold mb-2">Año</label>
           <input
-            id="nombre"
+            id="Año"
             className="border p-2 rounded w-full"
-            placeholder="Ingresa el nombre de la bodega"
+            placeholder="Ingresa el Año de produccion"
             onChange={handleChange}
-            value={formData.nombre}
+            value={formData.Año}
           />
           </div>
 
            {/* Email */}
         <div className="mb-4">
-          <label htmlFor="fundacionFecha" className="block text-gray-600 text-sm font-semibold mb-2">Fecha De fundación</label>
+          <label htmlFor="hectoExportados" className="block text-gray-600 text-sm font-semibold mb-2">Total Hectolitros Exportados</label>
           <input
-            id="fundacionFecha"
+            id="hectoExportados"
             className="border p-2 rounded w-full"
-            placeholder="Ingresa la fecha de fundacion de la empresa"
+            placeholder=""
             onChange={handleChange}
-            value={formData.fundacionFecha}
+            value={formData.hectoExportados}
           />
           </div>      
-          
-
-          {/* Email */}
-        <div className="mb-4">
-          <label htmlFor="direccion" className="block text-gray-600 text-sm font-semibold mb-2">direccion</label>
-          <input
-            id="direccion"
-            className="border p-2 rounded w-full"
-            placeholder="Ingresa la direccion de la empresa"
-            onChange={handleChange}
-            value={formData.direccion}
-          />
-          </div> 
 
 
            {/* Email */}
         <div className="mb-4">
-          <label htmlFor="telefono" className="block text-gray-600 text-sm font-semibold mb-2">Numero Telefonico</label>
+          <label htmlFor="totalBotellas" className="block text-gray-600 text-sm font-semibold mb-2">Total Botellas</label>
           <input
-            id="telefono"
+            id="totalBotellas"
             className="border p-2 rounded w-full"
-            placeholder="Ingresa Un telefono de contacto"
+            placeholder="Ingresa total de Botellas producidas"
             onChange={handleChange}
-            value={formData.telefono}
+            value={formData.totalBotellas}
           />
           </div> 
 
-            {/* Email */}
-        <div className="mb-4">
-          <label htmlFor="pagina" className="block text-gray-600 text-sm font-semibold mb-2">Pagina Web</label>
-          <input
-            id="pagina"
-            className="border p-2 rounded w-full"
-            placeholder="Ingresa la pagina de la empresa"
-            onChange={handleChange}
-            value={formData.pagina}
-          />
-          </div>
 
-          {/* Campo de Descripción */}
-          <div className="mb-4">
-            <label htmlFor="descripcionBodega" className="block text-gray-600 text-sm font-semibold mb-2">Descripción de Bodega</label>
-            <textarea
-              id="descripcionBodega"
+              {/* Combobox de Tipo */}
+              <div className="mb-4">
+            <label htmlFor="Calificacion" className="block text-gray-600 text-sm font-semibold mb-2">Calificación</label>
+            <select
+              id="Calificacion"
               className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-              placeholder="Ingrese una descripción"
               onChange={handleChange}
-              value={formData.descripcionBodega}
-            />
-          </div>
-
-          {/* Campo de Descripción */}
-          <div className="mb-4">
-            <label htmlFor="descripcionVinos" className="block text-gray-600 text-sm font-semibold mb-2">Descripción de Vino</label>
-            <textarea
-              id="descripcionVinos"
-              className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
-              placeholder="Ingrese una descripción"
-              onChange={handleChange}
-              value={formData.descripcionVinos}
-            />
+              value={formData.Calificacion}
+            >
+              <option value="Calificacion">Seleccione una Calificación</option>
+              {CalificacionData.map((Calificacion) => (
+                <option key={Calificacion} value={Calificacion}>
+                  {Calificacion}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="mb-4 flex justify-between">
@@ -211,4 +242,4 @@ function Tutorship() {
   )
 }
 
-export default Tutorship;
+export default ProduccionAnual;
